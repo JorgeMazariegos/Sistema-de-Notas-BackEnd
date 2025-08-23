@@ -15,7 +15,7 @@ module.exports = (sequelize, Sequelize) => {
         },
         especialidad:{
             type: DataTypes.STRING(20)
-        },
+        }
     });
     return Profesor;
 };

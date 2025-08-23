@@ -24,17 +24,20 @@ db.sequelize = sequelize;
 //Cargar Modelos
 
 const Profesor = require("./profesor.model.js")(sequelize, Sequelize);
-const Vehiculo = require("./vehicle.model.js")(sequelize, Sequelize);
-const Alquiler = require("./alquiler.model.js")(sequelize, Sequelize);
+const Grado = require("./grado.model.js")(sequelize, Sequelize);
+const Asistencia = require("./asistencia.model.js")(sequelize, Sequelize);
 
 db.profesor =  Profesor
-db.vehiculos =  Vehiculo
-db.alquiler =  Alquiler
+db.grados =  Grado
+db.asistencias =  Asistencia
 
 //Colocar relaciones
 
-Vehiculo.hasMany(Alquiler, {foreignKey:'id_vehiculo'});
-Alquiler.belongsTo(Vehiculo, {foreignKey:'id_vehiculo'});
+Asignacion.hasMany(Grado, {foreignKey:'id_asignacion'});
+Grado.belongsTo(Asignacion, {foreignKey:'id_asignacion'});
+
+Asignacion.hasMany(Asistencia, {foreignKey: 'id_asignacion'});
+Asistencia.belongsTo(Asignacion, {foreignKey: 'id_asignacion'});
 
 
 module.exports = db;
