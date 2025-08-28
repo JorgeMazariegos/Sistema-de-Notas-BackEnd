@@ -1,26 +1,22 @@
 const db = require("../models");
-const Profesor = db.profesores;
+const Curso = db.cursos;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
-
-    const profesor = {
+    const curso = {
         nombre: req.body.nombre,
-        email: req.body.email,
-        especialidad: req.body.especialidad,
-        telefono: req.body.telefono,
-        password: req.body.password,
-        estado: req.body.estado,
+        codigo: req.body.codigo,
+        semestre: req.body.semestre,
+        id_profesor: req.body.id_profesor
     };
 
-    Profesor.create(profesor)
+    Curso.create(curso)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
-                message:
-                    err.message || "Ocurrió un error al crear el registro de profesor."
+                message: err.message || "Ocurrió un error al crear el curso."
             });
         });
 };
@@ -29,14 +25,13 @@ exports.findAll = (req, res) => {
     const nombre = req.query.nombre;
     var condition = nombre ? { nombre: { [Op.iLike]: `%${nombre}%` } } : null;
 
-    Profesor.findAll({ where: condition })
+    Curso.findAll({ where: condition })
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
-                message:
-                    err.message || "Ocurrió un error al buscar información de profesores."
+                message: err.message || "Ocurrió un error al buscar los cursos."
             });
         });
 };
@@ -44,13 +39,19 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Profesor.findByPk(id_profesor)
+    Curso.findByPk(id_curso)
         .then(data => {
-            res.send(data);
+            if (data) {
+                res.send(data);
+            } else {
+                res.status(404).send({
+                    message: `No se encontró el curso con id=${id}.`
+                });
+            }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Ocurrió un error al buscar el profesor con id=" + id
+                message: "Ocurrió un error al buscar el curso con id=" + id
             });
         });
 };
@@ -58,46 +59,46 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
     const id = req.params.id;
 
-    Profesor.update(req.body, {
-        where: { id_profesor: id }
+    Curso.update(req.body, {
+        where: { id_curso: id }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Profesor "+ id + " se actualizó correctamente."
+                    message: "El curso " + id + " se actualizó correctamente."
                 });
             } else {
                 res.send({
-                    message: `No se pudo actualizar el profesor con id=${id}. Tal vez el profesor no se encontró o req.body está vacío!`
+                    message: `No se pudo actualizar el curso con id=${id}. Tal vez no se encontró o req.body está vacío!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "No se pudo actualizar el profesor con id=" + id
+                message: "No se pudo actualizar el curso con id=" + id
             });
         });
 };
 
 exports.delete = (req, res) => {
     const id = req.params.id;
-    Profesor.destroy({
-        where: { id_profesor: id }
+    Curso.destroy({
+        where: { id_curso: id }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "El registro del profesor se eliminó correctamente."
+                    message: "El curso se eliminó correctamente."
                 });
             } else {
                 res.send({
-                    message: `No se pudo eliminar el profesor con id=${id}. El profesor no fue encontado!`
+                    message: `No se pudo eliminar el curso con id=${id}.`
                 });
             }
         })
         .catch(err => {
-            resb.status(500).send({
-                message: "No se pudo eliminar el profesor con id=" + id
+            res.status(500).send({
+                message: "No se pudo eliminar el curso con id=" + id
             });
         });
 };

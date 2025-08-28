@@ -1,26 +1,26 @@
 const db = require("../models");
-const Profesor = db.profesores;
+const Estudiante = db.estudiante;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
-
-    const profesor = {
+    
+    const estudiante = {
         nombre: req.body.nombre,
+        apellido: req.body.apellido,
         email: req.body.email,
-        especialidad: req.body.especialidad,
+        carnet: req.body.carnet,
         telefono: req.body.telefono,
-        password: req.body.password,
-        estado: req.body.estado,
+
     };
 
-    Profesor.create(profesor)
+    Estudiante.create(estudiante)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Ocurrió un error al crear el registro de profesor."
+                    err.message || "Ocurrió un error al crear el registro de estudiante."
             });
         });
 };
@@ -29,14 +29,14 @@ exports.findAll = (req, res) => {
     const nombre = req.query.nombre;
     var condition = nombre ? { nombre: { [Op.iLike]: `%${nombre}%` } } : null;
 
-    Profesor.findAll({ where: condition })
+    Estudiante.findAll({ where: condition })
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Ocurrió un error al buscar información de profesores."
+                    err.message || "Ocurrió un error al buscar información de estudiantes."
             });
         });
 };
@@ -44,13 +44,13 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Profesor.findByPk(id_profesor)
+    Estudiante.findByPk(id_estudiante)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
-                message: "Ocurrió un error al buscar el profesor con id=" + id
+                message: "Ocurrió un error al buscar el estudiante con id=" + id
             });
         });
 };
@@ -58,46 +58,46 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
     const id = req.params.id;
 
-    Profesor.update(req.body, {
-        where: { id_profesor: id }
+    Estudiante.update(req.body, {
+        where: { id_estudiante: id }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Profesor "+ id + " se actualizó correctamente."
+                    message: "Estudiante "+ id + " se actualizó correctamente."
                 });
             } else {
                 res.send({
-                    message: `No se pudo actualizar el profesor con id=${id}. Tal vez el profesor no se encontró o req.body está vacío!`
+                    message: `No se pudo actualizar el estudiante con id=${id}. Tal vez el estudiante no se encontró o req.body está vacío!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "No se pudo actualizar el profesor con id=" + id
+                message: "No se pudo actualizar el estudiante con id=" + id
             });
         });
 };
 
 exports.delete = (req, res) => {
     const id = req.params.id;
-    Profesor.destroy({
-        where: { id_profesor: id }
+    Estudiante.destroy({
+        where: { id_estudiante: id }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "El registro del profesor se eliminó correctamente."
+                    message: "El registro del estudiante se eliminó correctamente."
                 });
             } else {
                 res.send({
-                    message: `No se pudo eliminar el profesor con id=${id}. El profesor no fue encontado!`
+                    message: `No se pudo eliminar el estudiante con id=${id}. El estudiante no fue encontado!`
                 });
             }
         })
         .catch(err => {
-            resb.status(500).send({
-                message: "No se pudo eliminar el profesor con id=" + id
+            res.status(500).send({
+                message: "No se pudo eliminar el estudiante con id=" + id
             });
         });
 };

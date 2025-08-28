@@ -15,7 +15,18 @@ module.exports = (sequelize, Sequelize) => {
         },
         especialidad:{
             type: DataTypes.STRING(20)
+        },
+        telefono:{
+            type: DataTypes.STRING(20)
+        },
+        password:{
+            type: DataTypes.STRING(50)
+        },
+        estado:{
+            type: DataTypes.BOOLEAN
         }
+
+
     });
     return Profesor;
 };

@@ -5,7 +5,7 @@ const Op = db.Sequelize.Op;
 exports.create = (req, res) => {
 
     const asistencia = {
-        id_asignacion: req.body.nota,
+        id_asignacion: req.body.id_asignacion,
         estatus: req.body.estatus,
         fecha: req.body.fecha
     };
