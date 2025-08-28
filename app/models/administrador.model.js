@@ -19,6 +19,8 @@ module.exports = (sequelize, Sequelize) => {
             type: DataTypes.STRING(50),
             allowNull: false
         }
+    },{
+        tableName: 'administradores',
     });
     return Administrador;
 };

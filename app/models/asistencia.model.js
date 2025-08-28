@@ -20,6 +20,9 @@ module.exports = (sequelize, Sequelize) => {
         fecha:{
             type: DataTypes.DATE
         }
+    },
+    {
+        tableName: 'asistencias',
     });
     return Asistencia;
 };

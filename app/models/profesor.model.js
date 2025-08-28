@@ -27,6 +27,10 @@ module.exports = (sequelize, Sequelize) => {
         }
 
 
-    });
+    },
+    {
+        tableName: 'profesores',
+    }
+);
     return Profesor;
 };
