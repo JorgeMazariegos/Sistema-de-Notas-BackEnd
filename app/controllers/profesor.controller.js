@@ -57,16 +57,15 @@ exports.findOne = (req, res) => {
 };
 
 exports.findbyEmail = (req, res) => {
-    const email = req.query.email;
-    var condition = email ? { email: { [Op.iLike]: `%${email}%` } } : null;
+    const teacherEmail = req.query.email;
 
-    Profesor.findAll({where: condition})
+    Profesor.findOne({where: {email : teacherEmail}})
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
-                message: "No se pudo encontrar el profesor con email=" + email
+                message: "No se pudo encontrar el profesor con email=" + teacherEmail
             });
         });
 };
