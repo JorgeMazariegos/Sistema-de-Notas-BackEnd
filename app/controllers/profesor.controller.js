@@ -1,3 +1,4 @@
+const { where } = require("sequelize");
 const db = require("../models");
 const Profesor = db.profesores;
 const Op = db.Sequelize.Op;
@@ -51,6 +52,21 @@ exports.findOne = (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message: "Ocurrió un error al buscar el profesor con id=" + id_profesor
+            });
+        });
+};
+
+exports.findbyEmail = (req, res) => {
+    const email = req.query.email;
+    var condition = email ? { email: { [Op.iLike]: `%${email}%` } } : null;
+
+    Profesor.findAll({where: condition})
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "No se pudo encontrar el profesor con email=" + email
             });
         });
 };

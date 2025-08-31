@@ -4,7 +4,8 @@ module.exports = app => {
     router.post("/create/", profesor.create);
     router.get("/", profesor.findAll);
     router.get("/:id", profesor.findOne);
+    router.get("/:email", profesor.findbyEmail);
     router.put("/update/:id", profesor.update);
-    router.delete("/delete/:id", profesor.delete);
+    router.delete("/delete/:id", profesor.delete); 
     app.use("/api/profesor", router);
 };
