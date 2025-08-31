@@ -37,7 +37,7 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-    const id = req.params.id;
+    const id_curso = req.params.id;
 
     Curso.findByPk(id_curso)
         .then(data => {
@@ -45,13 +45,13 @@ exports.findOne = (req, res) => {
                 res.send(data);
             } else {
                 res.status(404).send({
-                    message: `No se encontró el curso con id=${id}.`
+                    message: `No se encontró el curso con id=${id_curso}.`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Ocurrió un error al buscar el curso con id=" + id
+                message: "Ocurrió un error al buscar el curso con id=" + id_curso
             });
         });
 };

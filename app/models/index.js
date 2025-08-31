@@ -31,8 +31,9 @@ const Asignacion = require("./asignacion.model.js")(sequelize, Sequelize);
 const Estudiante = require("./estudiante.model.js")(sequelize, Sequelize);
 const Administrador = require("./administrador.model.js")(sequelize, Sequelize);
 
-db.profesor =  Profesor
+db.profesores =  Profesor
 db.grados =  Grado
+db.estudiante = Estudiante
 db.asistencias =  Asistencia
 db.cursos = Curso
 db.asignaciones = Asignacion

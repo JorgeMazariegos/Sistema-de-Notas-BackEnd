@@ -38,7 +38,7 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-    const id = req.params.id;
+    const id_asignacion = req.params.id;
 
     Asignacion.findByPk(id_asignacion)
         .then(data => {
@@ -46,7 +46,7 @@ exports.findOne = (req, res) => {
         })
         .catch(err => {
             res.status(500).send({
-                message: "Ocurrió un error al buscar la asignación con id=" + id
+                message: "Ocurrió un error al buscar la asignación con id=" + id_asignacion
             });
         });
 };

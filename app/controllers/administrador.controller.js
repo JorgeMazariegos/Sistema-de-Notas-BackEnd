@@ -41,7 +41,7 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-    const id = req.params.id;
+    const id_administrador = req.params.id;
 
     Administrador.findByPk(id_administrador)
         .then(data => {
@@ -49,7 +49,7 @@ exports.findOne = (req, res) => {
         })
         .catch(err => {
             res.status(500).send({
-                message: "Ocurrió un error al buscar el administrador con id=" + id
+                message: "Ocurrió un error al buscar el administrador con id=" + id_administrador
             });
         });
 };

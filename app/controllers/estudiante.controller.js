@@ -42,7 +42,7 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-    const id = req.params.id;
+    const id_estudiante = req.params.id;
 
     Estudiante.findByPk(id_estudiante)
         .then(data => {
@@ -50,7 +50,7 @@ exports.findOne = (req, res) => {
         })
         .catch(err => {
             res.status(500).send({
-                message: "Ocurrió un error al buscar el estudiante con id=" + id
+                message: "Ocurrió un error al buscar el estudiante con id=" + id_estudiante
             });
         });
 };

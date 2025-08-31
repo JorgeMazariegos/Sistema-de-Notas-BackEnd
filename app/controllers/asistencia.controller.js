@@ -39,7 +39,7 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-    const id = req.params.id;
+    const id_asistencia = req.params.id;
 
     Asistencia.findByPk(id_asistencia)
         .then(data => {
@@ -47,7 +47,7 @@ exports.findOne = (req, res) => {
         })
         .catch(err => {
             res.status(500).send({
-                message: "Ocurrió un error al buscar la asistencia con id=" + id
+                message: "Ocurrió un error al buscar la asistencia con id=" + id_asistencia
             });
         });
 };
