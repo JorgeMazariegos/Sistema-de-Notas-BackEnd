@@ -1,4 +1,3 @@
-const { PASSWORD } = require("../config/db.config");
 const db = require("../models");
 const Administrador = db.administradores;
 const Op = db.Sequelize.Op;

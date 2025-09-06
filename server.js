@@ -29,6 +29,7 @@ require("./app/routes/asignacion.routes")(app);
 require("./app/routes/estudiante.routes")(app);
 require("./app/routes/administrador.routes")(app);
 require("./app/routes/seccion.routes")(app);
+require("./app/routes/tarea.routes")(app);
 
 const PORT = process.env.PORT || 8081;
 app.listen(PORT, () => {

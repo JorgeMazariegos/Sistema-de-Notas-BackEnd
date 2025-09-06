@@ -31,6 +31,7 @@ const Asignacion = require("./asignacion.model.js")(sequelize, Sequelize);
 const Estudiante = require("./estudiante.model.js")(sequelize, Sequelize);
 const Administrador = require("./administrador.model.js")(sequelize, Sequelize);
 const Seccion = require("./seccion.model.js")(sequelize, Sequelize);
+const Tarea = require("./tarea.model.js")(sequelize, Sequelize);
 
 db.profesores =  Profesor
 db.grados =  Grado
@@ -40,6 +41,7 @@ db.cursos = Curso
 db.asignaciones = Asignacion
 db.administradores = Administrador
 db.secciones = Seccion
+db.tareas = Tarea
 
 //Colocar relaciones
 
@@ -54,5 +56,8 @@ Asistencia.belongsTo(Asignacion, {foreignKey: 'id_asignacion'});
 
 Seccion.hasMany(Asignacion, {foreignKey: 'id_seccion'});
 Asignacion.belongsTo(Seccion, {foreignKey: 'id_seccion'});
+
+Tarea.belongsTo(Seccion, {foreignKey: 'id_seccion'});
+Seccion.hasMany(Tarea, {foreignKey: 'id_seccion'});
 
 module.exports = db;
