@@ -9,11 +9,17 @@ module.exports = (sequelize, Sequelize) => {
         },
         id_estudiante: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            references:{
+                model: 'estudiantes',
+                key: 'id_estudiante'
+            }
         },
-        id_curso: {
+        id_seccion: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            references:{
+                model: 'secciones',
+                key: 'id_seccion'
+            }
         }
     }, {
         tableName: 'asignaciones',

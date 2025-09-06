@@ -6,7 +6,7 @@ exports.create = (req, res) => {
 
     const asignacion = {
         id_estudiante: req.body.id_estudiante,
-        id_curso: req.body.id_curso
+        id_seccion: req.body.id_seccion
     };
 
     Asignacion.create(asignacion)

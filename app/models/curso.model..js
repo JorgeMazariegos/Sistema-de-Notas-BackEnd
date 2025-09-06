@@ -19,14 +19,6 @@ module.exports = (sequelize, Sequelize) => {
         semestre: {
             type: DataTypes.STRING(10),
             allowNull: false
-        },
-        id_profesor: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'profesores',
-                key: 'id_profesor'
-            }
         }
     });
     return Curso;

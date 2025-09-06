@@ -7,7 +7,6 @@ exports.create = (req, res) => {
         nombre: req.body.nombre,
         codigo: req.body.codigo,
         semestre: req.body.semestre,
-        id_profesor: req.body.id_profesor
     };
 
     Curso.create(curso)
