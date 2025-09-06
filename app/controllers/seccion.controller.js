@@ -38,6 +38,20 @@ exports.findAll = (req, res) => {
         });
 };
 
+exports.findTeacherCourses = (req, res) => {
+    const id_profesor = req.params.id_profesor;
+
+    Seccion.findAll({ attributes: ['letra_seccion', 'id_curso'], where: { id_profesor: id_profesor } })
+        .then(data => {
+            res.send(data);
+        }).catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Ocurrió un error al buscar información."
+            });
+        });
+};
+
 exports.findOne = (req, res) => {
     const id_seccion = req.params.id;
 
