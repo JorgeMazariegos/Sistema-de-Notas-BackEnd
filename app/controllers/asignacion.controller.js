@@ -51,6 +51,21 @@ exports.findOne = (req, res) => {
         });
 };
 
+exports.findBySeccion = (req, res) => {
+    const id_seccion = req.params.id_seccion;
+
+    Asignacion.findAll({ include: ['estudiante'], where: { id_seccion: id_seccion }, attributes:[] })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Ocurrió un error al buscar la informacion de estudiantes en la seccion con id=" + id_seccion
+            });
+        });
+
+}
+
 exports.update = (req, res) => {
     const id = req.params.id;
 
