@@ -40,6 +40,20 @@ exports.findAll = (req, res) => {
         });
 };
 
+exports.findAllBySection = (req, res) => {
+    const id_seccion = req.params.id_seccion;
+    Tarea.findAll({ where: { id_seccion: id_seccion } })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Ocurrió un error al buscar información de tareas."
+            });
+        });
+};
+
 exports.findOne = (req, res) => {
     const id_tarea = req.params.id;
 
