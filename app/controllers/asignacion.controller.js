@@ -56,7 +56,8 @@ exports.findBySeccion = (req, res) => {
 
     Asignacion.findAll({ include: ['estudiante'], where: { id_seccion: id_seccion }, attributes:[] })
         .then(data => {
-            res.send(data);
+            const students = data.map(asignacion => asignacion.estudiante);
+            res.send(students);
         })
         .catch(err => {
             res.status(500).send({
