@@ -41,7 +41,7 @@ exports.findAll = (req, res) => {
 exports.findTeacherCourses = (req, res) => {
     const id_profesor = req.params.id_profesor;
 
-    Seccion.findAll({ attributes: ['letra_seccion', 'id_curso'], where: { id_profesor: id_profesor } })
+    Seccion.findAll({ attributes: ['id_seccion','letra_seccion', 'id_curso'], where: { id_profesor: id_profesor } })
         .then(data => {
             res.send(data);
         }).catch(err => {
