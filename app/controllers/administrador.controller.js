@@ -53,6 +53,20 @@ exports.findOne = (req, res) => {
         });
 };
 
+exports.findbyEmail = (req, res) => {
+    const email = req.params.email;
+
+    Administrador.findOne({where: {email : email}})
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "No se pudo encontrar el administrador con email=" + email
+            });
+        });
+};
+
 exports.update = (req, res) => {
     const id = req.params.id;
 

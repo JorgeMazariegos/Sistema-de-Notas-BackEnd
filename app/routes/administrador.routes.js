@@ -3,6 +3,7 @@ module.exports = app => {
     var router = require("express").Router();
     router.post("/create/", administrador.create);
     router.get("/", administrador.findAll);
+    router.get("/by-email/:email", administrador.findbyEmail);
     router.get("/:id", administrador.findOne);
     router.put("/update/:id", administrador.update);
     router.delete("/delete/:id", administrador.delete);
