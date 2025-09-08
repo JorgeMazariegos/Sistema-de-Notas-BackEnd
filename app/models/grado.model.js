@@ -8,7 +8,7 @@ module.exports = (sequelize, Sequelize) => {
             autoIncrement: true
         },
         nota:{
-            type: DataTypes.NUMERIC(3,2)
+            type: DataTypes.NUMERIC(5,2)
         },
         tipoEvaluacion:{
             type: DataTypes.STRING(200)
