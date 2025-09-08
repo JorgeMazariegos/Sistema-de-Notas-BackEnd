@@ -4,7 +4,6 @@ module.exports = app => {
     router.post("/create/", grado.create);
     router.get("/", grado.findAll);
     router.get("/by-asignacion/:id_asignacion", grado.findByAsignacion);
-    router.get("/one-by-asignacion/:id_asignacion", grado.findByAsignacionID);
     router.get("/:id", grado.findOne);
     router.put("/update/:id", grado.update);
     router.delete("/delete/:id", grado.delete);

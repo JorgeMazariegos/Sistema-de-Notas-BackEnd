@@ -91,20 +91,6 @@ exports.findByAsignacion = (req, res) => {
         });
 };
 
-exports.findByAsignacionID = (req, res) => {
-    const id_asignacion = req.params.id_asignacion;
-    Grado.findOne({ where: { id_asignacion: id_asignacion } })
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Ocurrió un error al buscar información de notas."
-            });
-        });
-};
-
 exports.delete = (req, res) => {
     const id = req.params.id;
     Grado.destroy({
