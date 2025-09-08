@@ -65,7 +65,21 @@ exports.findBySeccion = (req, res) => {
             });
         });
 
-}
+};
+
+exports.findAsignacionesBySeccion = (req, res) => {
+    const id_seccion = req.params.id_seccion;
+
+    Asignacion.findAll({ where: { id_seccion: id_seccion } })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Ocurrió un error al buscar la informacion de asignaciones en la seccion con id=" + id_seccion
+            });
+        });
+};        
 
 exports.update = (req, res) => {
     const id = req.params.id;
