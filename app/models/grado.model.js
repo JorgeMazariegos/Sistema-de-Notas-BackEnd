@@ -11,7 +11,7 @@ module.exports = (sequelize, Sequelize) => {
             type: DataTypes.NUMERIC(3,2)
         },
         tipoEvaluacion:{
-            type: DataTypes.STRING(30)
+            type: DataTypes.STRING(200)
         },
         id_asignacion:{
             type: DataTypes.INTEGER,
