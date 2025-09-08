@@ -14,7 +14,7 @@ module.exports = (sequelize, Sequelize) => {
             type: DataTypes.STRING(100)
         },
         especialidad:{
-            type: DataTypes.STRING(20)
+            type: DataTypes.STRING(100)
         },
         telefono:{
             type: DataTypes.STRING(20)
