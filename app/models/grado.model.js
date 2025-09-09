@@ -1,0 +1,28 @@
+const { DataTypes } = require("sequelize");
+
+module.exports = (sequelize, Sequelize) => {
+    const Grado = sequelize.define("grado", {
+        id_grado:{
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        nota:{
+            type: DataTypes.NUMERIC(5,2)
+        },
+        tipoEvaluacion:{
+            type: DataTypes.STRING(200)
+        },
+        id_asignacion:{
+            type: DataTypes.INTEGER,
+            references:{
+                model: 'asignaciones',
+                key: 'id_asignacion'
+            }
+        },
+        fecha:{
+            type: DataTypes.DATE
+        }
+    });
+    return Grado;
+};

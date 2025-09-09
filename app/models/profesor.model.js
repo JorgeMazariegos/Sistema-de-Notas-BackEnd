@@ -14,8 +14,23 @@ module.exports = (sequelize, Sequelize) => {
             type: DataTypes.STRING(100)
         },
         especialidad:{
+            type: DataTypes.STRING(100)
+        },
+        telefono:{
             type: DataTypes.STRING(20)
         },
-    });
+        password:{
+            type: DataTypes.STRING(50)
+        },
+        estado:{
+            type: DataTypes.BOOLEAN
+        }
+
+
+    },
+    {
+        tableName: 'profesores',
+    }
+);
     return Profesor;
 };
